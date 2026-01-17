@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Me API Playground</title>
+</head>
+<body>
+
+<h1>My Profile</h1>
+<div id="profile"></div>
+
+<h2>Search Projects</h2>
+<input id="search" placeholder="Search by skill or text">
+<button onclick="search()">Search</button>
+
+<ul id="projects"></ul>
+
+<script>
+const API = 'http://localhost:3000';
+
+fetch(API + '/profile')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('profile').innerHTML =
+      `<p>${data.name}</p><p>${data.education}</p>`;
+  });
+
+function search() {
+  const q = document.getElementById('search').value;
+  fetch(API + '/search?q=' + q)
+    .then(res => res.json())
+    .then(data => {
+      const list = document.getElementById('projects');
+      list.innerHTML = '';
+      data.forEach(p => {
+        list.innerHTML += `<li>${p.title} - ${p.skill}</li>`;
+      });
+    });
+}
+</script>
+
+</body>
+</html>
