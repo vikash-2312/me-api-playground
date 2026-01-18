@@ -3,8 +3,8 @@ VALUES (
   'Vikash Chandel',
   'vikash@email.com',
   'B.Tech CSE, NIT Delhi',
-  'https://github.com/yourusername',
-  'https://linkedin.com/in/yourusername'
+  'https://github.com/vikash-2312',
+  'https://linkedin.com/in/vikash-5a476931a'
 );
 
 INSERT INTO skills (name) VALUES
