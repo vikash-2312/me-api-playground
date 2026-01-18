@@ -13,4 +13,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-module.exports = app;
+/* 🔥 THIS IS THE KEY FIX */
+module.exports = (req, res) => {
+  app(req, res);
+};
