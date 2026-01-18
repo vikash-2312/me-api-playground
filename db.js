@@ -1,14 +1,17 @@
-const sqlite3 = require('sqlite3').verbose();
-const fs = require('fs');
+const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
 
-const db = new sqlite3.Database('./database.db');
+/**
+ * IMPORTANT:
+ * Vercel serverless allows read-only access only.
+ * DB must already exist in repo.
+ */
+const dbPath = path.join(__dirname, "database.db");
 
-const schema = fs.readFileSync('./schema.sql').toString();
-const seed = fs.readFileSync('./seed.sql').toString();
-
-db.serialize(() => {
-  db.exec(schema);
-  db.exec(seed);
+const db = new sqlite3.Database(dbPath, sqlite3.OPEN_READONLY, (err) => {
+  if (err) {
+    console.error("SQLite open error:", err.message);
+  }
 });
 
 module.exports = db;

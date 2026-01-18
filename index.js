@@ -20,14 +20,15 @@ app.get('/profile', (req, res) => {
 });
 
 /* Update profile */
-app.put('/profile', (req, res) => {
-  const { name, email, education } = req.body;
-  db.run(
-    'UPDATE profile SET name=?, email=?, education=? WHERE id=1',
-    [name, email, education],
-    () => res.json({ message: 'Profile updated' })
-  );
-});
+// app.put('/profile', (req, res) => {
+//   const { name, email, education } = req.body;
+//   db.run(
+//     'UPDATE profile SET name=?, email=?, education=? WHERE id=1',
+//     [name, email, education],
+//     () => res.json({ message: 'Profile updated' })
+//   );
+
+// });
 
 /* List projects + filter by skill */
 app.get('/projects', (req, res) => {
