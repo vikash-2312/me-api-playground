@@ -7,7 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK', vercel: true });
+  res.status(200).json({
+    status: 'OK',
+    source: 'vercel-api'
+  });
 });
 
 module.exports = app;
