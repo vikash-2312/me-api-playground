@@ -3,6 +3,7 @@ const cors = require('cors');
 const db = require('./db');
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -41,7 +42,6 @@ app.get('/projects', (req, res) => {
 
   db.all(sql, params, (err, rows) => {
     res.json(rows);
-   
   });
 });
 
@@ -63,6 +63,5 @@ app.get('/skills/top', (req, res) => {
   );
 });
 
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
-});
+/* ✅ EXPORT APP (VERY IMPORTANT) */
+module.exports = app;
